@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+$main: #B7C4CF;
+$alt: #EEE3CB;
+$brown: #967E76;
+$brown-light: #D7C0AE;
+$brown-dark: #663200;
+$transition: .2s;
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+@mixin btn($color) {
+  background-color: $color !important;
+  color: if(lightness($color) > 50%, black, white) !important;
+  transition: $transition;
+  &:hover{
+    background-color: darken($color, 10%) !important;
+  }
+  &:active {
+    border-color: white !important;
+  }
+}
+
+$colors: (
+  'main': $main,
+  'alt': $alt,
+  'brown': $brown,
+  'brown-light': $brown-light,
+  'brown-dark': $brown-dark,
+);
+
+@each $name, $color in $colors {
+  .btn-#{$name} {
+    @include btn($color);
+  }
+  
+  .bg-#{$name} {
+    background-color: $color !important;
+  }
+
+  .text-#{$name} {
+    color: $color !important;
+  }
+}
+
+.transition {
+  transition: $transition;
+}
