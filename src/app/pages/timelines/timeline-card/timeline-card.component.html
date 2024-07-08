@@ -1,1 +1,24 @@
-<p>timeline-card works!</p>
+<section class="mb-5">
+  <div class="d-flex mb-2 head gap-3 align-items-center">
+    <p class="mb-0">{{timeline.createdAt | date}}</p>
+    <button class="btn btn-brown-light text-white" (click)="handleAuth()" [attr.data-bs-toggle]="isLogin? 'modal' : null" [attr.data-bs-target]="isLogin? '#timelineModal' : null" type="button">
+      <i class="fa-solid fa-pen"></i>
+    </button>
+    <app-form-control></app-form-control>
+  </div>
+  <span class="circle"></span>
+  <div class="item pt-2 pb-4">
+    <h4>{{timeline.title}}</h4>
+    <p class="text-muted">{{timeline.description}}</p>
+    <button type="button" class="d-block me-auto text-start p-0 border-0" data-bs-toggle="modal" [attr.data-bs-target]="'#modal'+timeline.createdAt">
+      <img [src]="'images/'+timeline.imageUrl" class="rounded-2 w-100 object-fit-cover" alt="">
+    </button>
+    <div class="modal fade p-1 p-md-4" [id]="'modal'+timeline.createdAt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-white">
+            <img [src]="'images/'+timeline.imageUrl" data-bs-dismiss="modal" class="rounded-2 w-100 h-100" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

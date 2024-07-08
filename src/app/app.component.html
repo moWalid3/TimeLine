@@ -1,4 +1,13 @@
 <app-navbar></app-navbar>
-<div class="container py-4">
+<div class="container py-5">
   <router-outlet></router-outlet>
-</div>
+</div> 
+<ngx-spinner
+  bdColor="rgba(215, 192, 174, 0.8)"
+  size="medium"
+  color="#663100"
+  type="ball-fall"
+  [fullScreen]="true"
+  >
+  <p class="text-brown-dark fs-4">Loading...</p>
+</ngx-spinner>

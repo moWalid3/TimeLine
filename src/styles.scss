@@ -5,8 +5,8 @@
 $main: #B7C4CF;
 $alt: #EEE3CB;
 $brown: #967E76;
-$brown-light: #D7C0AE;
-$brown-dark: #663200;
+$brown-light: #d7c0ae;
+$brown-dark: #663100;
 $transition: .2s;
 
 body {
@@ -49,4 +49,7 @@ $colors: (
 
 .transition {
   transition: $transition;
+}
+.cursor-pointer {
+  cursor: pointer;
 }

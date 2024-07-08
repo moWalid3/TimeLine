@@ -11,12 +11,18 @@
         <li class="nav-item">
           <a class="nav-link fw-medium" routerLink="/" routerLinkActive="bg-brown-dark text-white rounded-pill" [routerLinkActiveOptions]="{exact: true}">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link fw-medium" routerLink="/login" routerLinkActive="bg-brown-dark text-white rounded-pill">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-medium" routerLink="/register" routerLinkActive="bg-brown-dark text-white rounded-pill">Register</a>
-        </li>
+        @if (!isLogin) {
+          <li class="nav-item">
+            <a class="nav-link fw-medium" routerLink="/login" routerLinkActive="bg-brown-dark text-white rounded-pill">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium" routerLink="/register" routerLinkActive="bg-brown-dark text-white rounded-pill">Register</a>
+          </li>
+        } @else {
+          <li class="nav-item">
+            <a class="nav-link fw-medium" routerLink="/login" (click)="logout()">Logout</a>
+          </li>
+        }
       </ul>
     </div>
   </div>

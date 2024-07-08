@@ -1,3 +1,16 @@
 <section>
-  
+  <div class="row g-0">
+    <div class="order-lg-0 order-1 col-lg-10">
+      @for (timeline of timelines; track $index) {
+      <app-timeline-card [timeline]="timeline"></app-timeline-card>
+      }
+    </div>
+    <div class="col-lg-2 order-lg-0 text-center mb-5">
+      <button (click)="handleAuth()" class="btn btn-brown-dark text-white px-3 py-2 rounded-pill" [attr.data-bs-toggle]="isLogin? 'modal' : null" [attr.data-bs-target]="isLogin? '#timelineModal' : null" type="button">
+        <i class="fa-solid fa-plus"></i>
+        Add New Timeline
+      </button>
+      <app-form-control></app-form-control>
+    </div>
+  </div>
 </section>

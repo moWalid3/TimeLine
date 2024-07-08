@@ -1,0 +1,11 @@
+.modal-dialog {
+  max-width: 40rem !important;
+}
+
+label[for="file"] {
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

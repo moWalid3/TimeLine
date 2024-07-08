@@ -1,1 +1,54 @@
-<p>register works!</p>
+
+<section class="row">
+  <h2 class="text-center mb-4">Register</h2>
+
+  <form [formGroup]="registerForm" class="col-md-8 mx-auto" (ngSubmit)="onSubmit()">
+
+    <div class="mb-3">
+      <label for="email">Email :</label>
+      <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="invalidEmailFeedback"
+        [ngClass]="{
+          'is-invalid': email.errors && (email.touched || email.dirty),
+          'is-valid': !email.errors && (email.touched || email.dirty),
+          }"
+      >
+      <div id="invalidEmailFeedback" class="invalid-feedback">
+        @if (email.getError('required')) { <span>Email is required.</span> }
+        @if (email.getError('pattern')) { <span>Enter a valid email.</span> }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password">Password :</label>
+      <input type="password" formControlName="password" class="form-control" id="password" aria-describedby="invalidpasswordFeedback"
+        [ngClass]="{
+          'is-invalid': password.errors && (password.touched || password.dirty),
+          'is-valid': !password.errors && (password.touched || password.dirty),
+          }"
+      >
+      <div id="invalidpasswordFeedback" class="invalid-feedback">
+        @if (password.getError('required')) { <span>Password is required.</span> }
+        @if (password.getError('minlength')) { <span>Min length 6 char.</span> }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="rePassword">rePassword :</label>
+      <input type="password" formControlName="rePassword" class="form-control" id="rePassword" aria-describedby="invalidrePasswordFeedback"
+        [ngClass]="{
+          'is-invalid': rePassword.errors && (rePassword.touched || rePassword.dirty),
+          'is-valid': !rePassword.errors && (rePassword.touched || rePassword.dirty),
+          }"
+      >
+      <div id="invalidrePasswordFeedback" class="invalid-feedback">
+        @if (rePassword.getError('required')) { <span>RePassword is required.</span> }
+        @if (rePassword.getError('rePasswordMatch')) { <span>Password and rePassword don't match</span> }
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <button [disabled]="registerForm.invalid" type="submit" class="btn btn-brown-dark">Register</button>
+      <a routerLink='/login'>I already have an account</a>
+    </div>
+  </form>
+</section>

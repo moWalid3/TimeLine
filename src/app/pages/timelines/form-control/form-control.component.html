@@ -1,1 +1,64 @@
-<p>form-control works!</p>
+<!-- Modal -->
+<div class="modal fade" id="timelineModal" tabindex="-1" aria-labelledby="timelineModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <div class="modal-header border-0 pb-0">
+        <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Add Timeline</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="timelineForm" (ngSubmit)="onSubmit()">
+
+          <div class="mb-3">
+            <label for="title">Title :</label>
+            <input type="text" class="form-control" formControlName="title" id="title" aria-describedby="invalidTitleFeedback"
+            [ngClass]="{
+              'is-invalid': title.errors && (title.touched || title.dirty),
+              'is-valid': !title.errors && (title.touched || title.dirty),
+              }"
+            >
+            <div id="invalidTitleFeedback" class="invalid-feedback" *ngIf="title.hasError">
+              Title is required.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description">Description :</label>
+            <textarea class="form-control" formControlName="description" id="description" name="description"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="date">Date :</label>
+            <input type="date" class="form-control" formControlName="date" id="date" aria-describedby="invalidDateFeedback"
+            [ngClass]="{
+              'is-invalid': date.errors && (date.touched || date.dirty),
+              'is-valid': !date.errors && (date.touched || date.dirty),
+              }"
+            >
+            <div id="invalidDateFeedback" class="invalid-feedback" *ngIf="date.hasError">
+              Date is required.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="file" class="form-label text-center overflow-hidden border rounded-2 cursor-pointer w-100">
+              <input type="file" hidden class="form-control" name="" (change)="handleFile($event)" id="file" name="file">
+              @if (!selectedFile) {
+              <i class="fa-solid fa-cloud-arrow-up fs-4"></i>
+              <p class="mb-0">Click to upload</p>
+              } @else {
+                <img [src]="imageSrc" class="w-100 " alt="">
+              }
+            </label>
+          </div>
+
+          <div class="d-flex justify-content-center gap-2">
+            <button type="button" class="btn btn-alt text-white w-25" data-bs-dismiss="modal">Close</button>
+            <button type="submit" [disabled]="timelineForm.invalid" data-bs-dismiss="modal" class="btn btn-brown-dark flex-grow-1">Add Timeline</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
