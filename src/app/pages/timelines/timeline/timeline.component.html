@@ -6,11 +6,11 @@
       }
     </div>
     <div class="col-lg-2 order-lg-0 text-center mb-5">
-      <button (click)="handleAuth()" class="btn btn-brown-dark text-white px-3 py-2 rounded-pill" [attr.data-bs-toggle]="isLogin? 'modal' : null" [attr.data-bs-target]="isLogin? '#timelineModal' : null" type="button">
+      <button (click)="handleAuth()" class="btn btn-brown-dark text-white px-3 py-2 rounded-pill" [attr.data-bs-toggle]="isLogin? 'modal' : null" [attr.data-bs-target]="isLogin? '#addTimelineModal' : null" type="button">
         <i class="fa-solid fa-plus"></i>
         Add New Timeline
       </button>
-      <app-form-control></app-form-control>
+      <app-form-control [modalId]="'addTimelineModal'"></app-form-control>
     </div>
   </div>
 </section>

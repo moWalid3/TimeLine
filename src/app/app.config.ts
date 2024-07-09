@@ -11,12 +11,12 @@ import { provideToastr } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDF2oqxFkNZuaayHy6aa9drvU_KvD-MVHo",
-  authDomain: "timeline-b84dc.firebaseapp.com",
-  projectId: "timeline-b84dc",
-  storageBucket: "timeline-b84dc.appspot.com",
-  messagingSenderId: "881575095951",
-  appId: "1:881575095951:web:4bbedc0ccf4a9a8ada4afa"
+  apiKey: "AIzaSyB0FLB44Eo67gFApYHll6qfFmzltMcbssI",
+  authDomain: "timeline-eac3f.firebaseapp.com",
+  projectId: "timeline-eac3f",
+  storageBucket: "timeline-eac3f.appspot.com",
+  messagingSenderId: "816770391440",
+  appId: "1:816770391440:web:16d547f7ddbf1817046715"
 };
 
 export const appConfig: ApplicationConfig = {

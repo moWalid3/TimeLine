@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { Observable } from 'rxjs';
 import { User } from '@angular/fire/auth';
@@ -23,7 +23,6 @@ export class NavbarComponent {
     this.currentUser$.subscribe(res => {
       if(res) this.isLogin = true;
       else this.isLogin = false;
-      console.log(res);
     });
   }
 

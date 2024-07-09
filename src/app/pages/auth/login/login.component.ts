@@ -16,8 +16,8 @@ import { User } from '@angular/fire/auth';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit{
-  private _AuthService = inject(AuthService);
   private currentUser$!: Observable<User | null>;
+  private _AuthService = inject(AuthService);
   private _Router = inject(Router);
   private spinner = inject(NgxSpinnerService)
   private toaster = inject(ToastrService);
@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit{
   get email(): AbstractControl {
     return this.loginForm.get('email')!;
   }
+  
   get password(): AbstractControl {
     return this.loginForm.get('password')!;
   }

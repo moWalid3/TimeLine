@@ -16,8 +16,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnInit{
-  private _AuthService = inject(AuthService);
   private currentUser$!: Observable<User | null>;
+  private _AuthService = inject(AuthService);
   private _Router = inject(Router);
   private spinner = inject(NgxSpinnerService)
   private toaster = inject(ToastrService);
@@ -49,9 +49,11 @@ export class RegisterComponent implements OnInit{
   get email(): AbstractControl {
     return this.registerForm.get('email')!;
   }
+
   get password(): AbstractControl {
     return this.registerForm.get('password')!;
   }
+  
   get rePassword(): AbstractControl {
     return this.registerForm.get('rePassword')!;
   }

@@ -1,20 +1,20 @@
 <!-- Modal -->
-<div class="modal fade" id="timelineModal" tabindex="-1" aria-labelledby="timelineModalLabel" aria-hidden="true">
+<div class="modal fade" [id]="modalId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="timelineModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content p-3">
       <div class="modal-header border-0 pb-0">
-        <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Add Timeline</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">{{modalId != 'addTimelineModal'? 'Update': 'Add'}} Timeline</h1>
+        <button type="button" class="btn-close" (click)="resetModal()" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="timelineForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="timelineForm">
 
           <div class="mb-3">
-            <label for="title">Title :</label>
-            <input type="text" class="form-control" formControlName="title" id="title" aria-describedby="invalidTitleFeedback"
-            [ngClass]="{
-              'is-invalid': title.errors && (title.touched || title.dirty),
-              'is-valid': !title.errors && (title.touched || title.dirty),
+            <label [for]="'title'+modalId">Title :</label>
+            <input type="text" class="form-control" formControlName="title" [id]="'title'+modalId" aria-describedby="invalidTitleFeedback"
+              [ngClass]="{
+                'is-invalid': title.errors && (title.touched || title.dirty),
+                'is-valid': !title.errors && (title.touched || title.dirty),
               }"
             >
             <div id="invalidTitleFeedback" class="invalid-feedback" *ngIf="title.hasError">
@@ -23,38 +23,43 @@
           </div>
 
           <div class="mb-3">
-            <label for="description">Description :</label>
-            <textarea class="form-control" formControlName="description" id="description" name="description"></textarea>
+            <label [for]="'description'+modalId">Description :</label>
+            <textarea class="form-control" formControlName="description" [id]="'description'+modalId" name="description"></textarea>
           </div>
 
           <div class="mb-3">
-            <label for="date">Date :</label>
-            <input type="date" class="form-control" formControlName="date" id="date" aria-describedby="invalidDateFeedback"
-            [ngClass]="{
-              'is-invalid': date.errors && (date.touched || date.dirty),
-              'is-valid': !date.errors && (date.touched || date.dirty),
+            <label [for]="'date'+modalId">Date :</label>
+            <input type="date" class="form-control" formControlName="createdAt" [id]="'date'+modalId" aria-describedby="invalidDateFeedback"
+              [ngClass]="{
+                'is-invalid': createdAt.errors && (createdAt.touched || createdAt.dirty),
+                'is-valid': !createdAt.errors && (createdAt.touched || createdAt.dirty),
               }"
             >
-            <div id="invalidDateFeedback" class="invalid-feedback" *ngIf="date.hasError">
+            <div id="invalidDateFeedback" class="invalid-feedback" *ngIf="createdAt.hasError">
               Date is required.
             </div>
           </div>
 
           <div class="mb-3">
-            <label for="file" class="form-label text-center overflow-hidden border rounded-2 cursor-pointer w-100">
-              <input type="file" hidden class="form-control" name="" (change)="handleFile($event)" id="file" name="file">
-              @if (!selectedFile) {
+            <label [for]="'file'+modalId" class="form-label file-label text-center overflow-hidden border rounded-2 cursor-pointer w-100">
+              <input type="file" hidden class="form-control" name="" (change)="handleFile($event)" [id]="'file'+modalId" name="file">
+              @if (!selectedFile && this.modalId === 'addTimelineModal') {
               <i class="fa-solid fa-cloud-arrow-up fs-4"></i>
-              <p class="mb-0">Click to upload</p>
+              <p class="mb-0">Click to upload image</p>
               } @else {
-                <img [src]="imageSrc" class="w-100 " alt="">
+                <img [src]="imageSrc.getValue()" class="w-100 " alt="">
               }
             </label>
           </div>
 
-          <div class="d-flex justify-content-center gap-2">
-            <button type="button" class="btn btn-alt text-white w-25" data-bs-dismiss="modal">Close</button>
-            <button type="submit" [disabled]="timelineForm.invalid" data-bs-dismiss="modal" class="btn btn-brown-dark flex-grow-1">Add Timeline</button>
+          <div class="row gy-1">
+            <button type="button" class="btn btn-alt text-white col-3 me-1" (click)="resetModal()" data-bs-dismiss="modal">Close</button>
+            @if (modalId != 'addTimelineModal') {
+              <button type="button" class="btn btn-danger text-white col-3 me-1" (click)="deleteTimeline()" data-bs-dismiss="modal">Delete</button>
+              <button [disabled]="!editChangedData" (click)="updateTimeline()" data-bs-dismiss="modal"  class="btn btn-brown-dark col" type="submit">Update Timeline</button>
+            } @else {
+              <button [disabled]="timelineForm.invalid" (click)="addTimeline()" data-bs-dismiss="modal"  class="btn btn-brown-dark col" type="submit">Add Timeline</button>
+            }
           </div>
 
         </form>

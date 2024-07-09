@@ -6,7 +6,6 @@ import { AuthService } from '../../../core/services/auth.service';
 import { Observable } from 'rxjs';
 import { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -18,11 +17,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TimelineCardComponent implements OnInit{
   @Input() timeline!: Timeline;
-
+  
   private _AuthService = inject(AuthService);
   private currentUser$!: Observable<User | null>;
   private _Router = inject(Router);
-  private spinner = inject(NgxSpinnerService)
   private toaster = inject(ToastrService);
   isLogin: boolean = false;
 
@@ -33,7 +31,6 @@ export class TimelineCardComponent implements OnInit{
       else this.isLogin = false;
     });
   }
-
 
   handleAuth() {
     if(!this.isLogin) {

@@ -10,7 +10,7 @@
         [ngClass]="{
           'is-invalid': email.errors && (email.touched || email.dirty),
           'is-valid': !email.errors && (email.touched || email.dirty),
-          }"
+        }"
       >
       <div id="invalidEmailFeedback" class="invalid-feedback">
         @if (email.getError('required')) { <span>Email is required.</span> }
@@ -24,7 +24,7 @@
         [ngClass]="{
           'is-invalid': password.errors && (password.touched || password.dirty),
           'is-valid': !password.errors && (password.touched || password.dirty),
-          }"
+        }"
       >
       <div id="invalidpasswordFeedback" class="invalid-feedback">
         @if (password.getError('required')) { <span>Password is required.</span> }
@@ -38,7 +38,7 @@
     </div>
   </form>
 
-  <div >
+  <div>
     <button (click)="loginWithGoogle()" class="btn btn-light border-1 border transition shadow-sm d-flex gap-2 justify-content-center align-items-center mx-auto">
         <svg
         xmlns="http://www.w3.org/2000/svg"

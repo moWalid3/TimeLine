@@ -10,7 +10,7 @@
         [ngClass]="{
           'is-invalid': email.errors && (email.touched || email.dirty),
           'is-valid': !email.errors && (email.touched || email.dirty),
-          }"
+        }"
       >
       <div id="invalidEmailFeedback" class="invalid-feedback">
         @if (email.getError('required')) { <span>Email is required.</span> }
@@ -24,7 +24,7 @@
         [ngClass]="{
           'is-invalid': password.errors && (password.touched || password.dirty),
           'is-valid': !password.errors && (password.touched || password.dirty),
-          }"
+        }"
       >
       <div id="invalidpasswordFeedback" class="invalid-feedback">
         @if (password.getError('required')) { <span>Password is required.</span> }
@@ -38,11 +38,11 @@
         [ngClass]="{
           'is-invalid': rePassword.errors && (rePassword.touched || rePassword.dirty),
           'is-valid': !rePassword.errors && (rePassword.touched || rePassword.dirty),
-          }"
+        }"
       >
       <div id="invalidrePasswordFeedback" class="invalid-feedback">
         @if (rePassword.getError('required')) { <span>RePassword is required.</span> }
-        @if (rePassword.getError('rePasswordMatch')) { <span>Password and rePassword don't match</span> }
+        @if (rePassword.getError('rePasswordMatch')) { <span>Password and rePassword don't match.</span> }
       </div>
     </div>
 

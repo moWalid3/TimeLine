@@ -2,10 +2,19 @@
   max-width: 40rem !important;
 }
 
-label[for="file"] {
+.file-label {
   height: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+label{
+  width: 100%;
+  text-align: start;
+}
+
+.invalid-feedback {
+  text-align: start;
 }
